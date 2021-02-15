@@ -19,6 +19,7 @@ def create_bookmark(db: Session, item: schemas.BookmarkCreate):
 def delete_bookmark(db: Session, id:int):
     if db.query(models.Bookmark).get(id):
         db.query(models.Bookmark).filter_by(id=id).delete()
+        db.commit()
         return {"status": True, "message":f"Record {id} deleted"}
     else:
         return {"status": True, "message":"No such record"}
