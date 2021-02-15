@@ -18,3 +18,8 @@ class Bookmark(BookmarkBase):
     class Config:
         orm_mode = True
 
+# transaction schema
+class Transaction(BaseModel):
+    status: bool
+    message: str
+
