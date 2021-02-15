@@ -20,19 +20,21 @@ const GetBookmarks = (params) => {
   );
   // console.log(data);
 
-  const renderLi = (array) =>
-    array.map((el) => (
-      <li key={el.id}>
-        {el.name}, {el.url}
-      </li>
-    ));
+    
+
+
+  // const renderLi = (array) =>
+  //   array.map((el) => (
+  //     <li key={el.id}>
+  //       {el.name}, {el.url}
+  //     </li>
+  //   ));
 
   const renderTr = (array) =>
     array.map((el) => (
       <TableRow key={el.id}>
         <TableCell>{el.id}</TableCell>
-        <TableCell>{el.name}</TableCell>
-        <TableCell>{el.url}</TableCell>
+        <TableCell> <a href={"//" + el.url} target="_blank">{el.name}</a></TableCell>
         <TableCell>
           <Button variant="contained" color="primary" href="#contained-buttons">
             Delete
@@ -51,8 +53,7 @@ const GetBookmarks = (params) => {
               <TableRow>
                 <TableCell>ID</TableCell>
                 <TableCell>Name</TableCell>
-                <TableCell>URL</TableCell>
-                <TableCell>Delete</TableCell>
+                <TableCell></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>{renderTr(data)}</TableBody>
