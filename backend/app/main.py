@@ -65,6 +65,6 @@ def read_bookmark(id:int, db: Session = Depends(get_db)):
     return item
 
 @app.delete("/bookmarks/{id}", response_model=schemas.Transaction)
-def read_bookmark(id:int, db: Session = Depends(get_db)):
+def delete_bookmark(id:int, db: Session = Depends(get_db)):
     msg = crud.delete_bookmark(db=db, id=id)
     return msg
