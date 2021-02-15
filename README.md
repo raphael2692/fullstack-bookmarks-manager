@@ -25,8 +25,8 @@ Frontend runs at localhost:3000
 - Replace SQLlite with Postgre running in a container
 - Create a docker-compose.yml to start the whole project
 - Implement a "tag" field to the "Bookmark" entity using "Array" as default type
-- Implement Delete (frontend)
 - Implement Update functionality
+- Avoid full page refresh on operations
 
 
 ## License 

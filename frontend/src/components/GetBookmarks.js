@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { useFetch } from "../utils/useFetch";
 
 import Typography from "@material-ui/core/Typography";
@@ -16,12 +15,14 @@ import Paper from "@material-ui/core/Paper";
 const GetBookmarks = (params) => {
   // GET
   const { data, loading } = useFetch(
-    `http://localhost/bookmarks/?skip=0&limit=10`
+    `http://localhost/bookmarks/?skip=0&limit=100`
   );
   // console.log(data);
 
-    
-
+  // DELETE
+  async function deletePost(url) {
+    await fetch(url, { method: "DELETE" }).then(window.location.reload());
+  }
 
   // const renderLi = (array) =>
   //   array.map((el) => (
@@ -34,10 +35,19 @@ const GetBookmarks = (params) => {
     array.map((el) => (
       <TableRow key={el.id}>
         <TableCell>{el.id}</TableCell>
-        <TableCell> <a href={"//" + el.url} target="_blank">{el.name}</a></TableCell>
         <TableCell>
-          <Button variant="contained" color="primary" href="#contained-buttons">
-            Delete
+          {" "}
+          <a href={"//" + el.url} target="_blank">
+            {el.name}
+          </a>
+        </TableCell>
+        <TableCell>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={() => deletePost("http://localhost/bookmarks/" + el.id)}
+          >
+            DELETE
           </Button>
         </TableCell>
       </TableRow>
