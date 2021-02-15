@@ -63,3 +63,8 @@ def read_bookmarks(skip: int = 0, limit: int = 100, db: Session = Depends(get_db
 def read_bookmark(id:int, db: Session = Depends(get_db)):
     item = crud.get_bookmark(db=db, id=id)
     return item
+
+@app.delete("/bookmarks/{id}")
+def read_bookmark(id:int, db: Session = Depends(get_db)):
+    msg = crud.delete_bookmark(db=db, id=id)
+    return msg
