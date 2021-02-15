@@ -37,7 +37,7 @@ const GetBookmarks = (params) => {
         <TableCell>{el.id}</TableCell>
         <TableCell>
           {" "}
-          <a href={"//" + el.url} target="_blank">
+          <a href={el.url} target="_blank">
             {el.name}
           </a>
         </TableCell>
@@ -62,7 +62,7 @@ const GetBookmarks = (params) => {
             <TableHead>
               <TableRow>
                 <TableCell>ID</TableCell>
-                <TableCell>Name</TableCell>
+                <TableCell>URL</TableCell>
                 <TableCell></TableCell>
               </TableRow>
             </TableHead>
