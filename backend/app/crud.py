@@ -2,7 +2,6 @@ from sqlalchemy.orm import Session
 
 from . import models, schemas
 
-
 def get_bookmarks(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.Bookmark).offset(skip).limit(limit).all()
 
@@ -22,4 +21,4 @@ def delete_bookmark(db: Session, id:int):
         db.commit()
         return {"status": True, "message":f"Record {id} deleted"}
     else:
-        return {"status": True, "message":"No such record"}
+        return {"status": False, "message":"No such record"}

@@ -6,6 +6,8 @@ from sqlalchemy.orm import Session
 from . import crud, models, schemas
 from .database import SessionLocal, engine
 
+from fastapi import FastAPI, HTTPException
+
 from fastapi.middleware.cors import CORSMiddleware
 
 models.Base.metadata.create_all(bind=engine)
@@ -67,4 +69,7 @@ def read_bookmark(id:int, db: Session = Depends(get_db)):
 @app.delete("/bookmarks/{id}", response_model=schemas.Transaction)
 def delete_bookmark(id:int, db: Session = Depends(get_db)):
     msg = crud.delete_bookmark(db=db, id=id)
+    if msg["status"]  == False:
+        raise HTTPException(status_code=404, detail=msg["message"])
     return msg
+#
